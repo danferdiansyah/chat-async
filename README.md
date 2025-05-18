@@ -18,3 +18,10 @@ Untuk mengubah port dari 2000 menjadi 8080, ada dua hal utama yang harus diubah
 3. (Opsional) Pada `server.rs`, ubah pesan setelah *binding port* menjadi `println!("listening on port 8080");`
 
 Dengan demikian, ketika kita menjalankan server dan client, sistem akan berjalan di port `8080`.
+
+## Add IP and Port
+
+![image](https://github.com/user-attachments/assets/2fca4c74-e818-44c3-8a07-7e6e7d9dbac9)
+
+Pada commit ini, untuk menambahkan IP dan Port client yang mengirim *broadcast message* , kita hanya perlu mengubah
+`bcast_tx.send(text.into())?;` menjadi `bcast_tx.send(format!("{}: {}", addr, text))?;`. Dengan demikian, tiap *broadcast message* akan memiliki informasi address pengirim.
